@@ -57,7 +57,7 @@ section[id]{scroll-margin-top:104px}
 
 /* Step names ride a reel that slides continuously with scroll; the mask fades
    the neighbouring steps so only the active one is fully legible. */
-.soz-reel{--rh:clamp(56px,9vh,106px);height:calc(var(--rh)*5);overflow:hidden;
+.soz-reel{--rh:clamp(56px,10.5vh,124px);height:calc(var(--rh)*5);overflow:hidden;
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.22) 17%,rgba(0,0,0,.8) 39%,#000 50%,rgba(0,0,0,.8) 61%,rgba(0,0,0,.22) 83%,transparent 100%);
           mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.22) 17%,rgba(0,0,0,.8) 39%,#000 50%,rgba(0,0,0,.8) 61%,rgba(0,0,0,.22) 83%,transparent 100%)}
 .soz-reel-track{padding-top:calc(var(--rh)*2);will-change:transform}
@@ -72,7 +72,7 @@ section[id]{scroll-margin-top:104px}
 .soz-price-card:hover .soz-price-arrow{background:var(--accent);border-color:var(--accent);color:var(--text-on-accent);transform:translate(3px,-3px)}
 
 
-.soz-book-card{max-width:720px;margin:0 auto;border:1px solid var(--border-on-dark);
+.soz-book-card{max-width:900px;margin:0 auto;border:1px solid var(--border-on-dark);
   border-radius:var(--radius-lg);background:var(--bg-surface-raised);padding:clamp(16px,2.4vw,28px)}
 .soz-book-lbl{color:var(--text-on-dark-secondary);font-size:10px;font-weight:var(--weight-semibold);
   letter-spacing:var(--tracking-widest);text-transform:uppercase;margin-bottom:9px}
@@ -181,7 +181,7 @@ section[id]{scroll-margin-top:104px}
 
 <!-- ═══════════════════ 1 · УСЛУГИ ═══════════════════ -->
 <section id="services" data-tone="dark" style="background:var(--bg-surface);padding:clamp(118px,10vw,140px) clamp(20px,5vw,56px)">
-<div style="max-width:var(--container-full);margin:0 auto">
+<div style="max-width:1720px;margin:0 auto">
 
   <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)">
     <div>
@@ -189,9 +189,9 @@ section[id]{scroll-margin-top:104px}
         <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
         <span style="color:var(--accent);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Что мы делаем</span>
       </div>
-      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,6vw,5rem);line-height:0.95;letter-spacing:-0.01em">Услуги</h2>
+      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,6vw,6.4rem);line-height:0.95;letter-spacing:-0.01em">Услуги</h2>
     </div>
-    <p style="margin:0;color:var(--text-on-dark-secondary);font-size:15px;line-height:1.6;max-width:340px">Полный цикл — от первой структуры до запуска и развития. Берём проект целиком, а не кусками.</p>
+    <p style="margin:0;color:var(--text-on-dark-secondary);font-size:clamp(15px,1.05vw,17px);line-height:1.6;max-width:min(400px,26vw)">Полный цикл — от первой структуры до запуска и развития. Берём проект целиком, а не кусками.</p>
   </div>
 
   <div class="soz-services-grid">
@@ -204,10 +204,10 @@ section[id]{scroll-margin-top:104px}
         </div>
         <div class="soz-svc-body" style="padding:20px 20px 24px;display:flex;flex-direction:column;gap:9px;flex:1">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-            <h3 class="soz-svc-title" style="margin:0;font-family:'SOZ Display','Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(1.05rem,1.5vw,1.35rem);line-height:1.06;letter-spacing:-0.005em">{{ s.name }}</h3>
+            <h3 class="soz-svc-title" style="margin:0;font-family:'SOZ Display','Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(1.05rem,1.5vw,1.6rem);line-height:1.06;letter-spacing:-0.005em">{{ s.name }}</h3>
             <span class="soz-svc-arrow" style="flex-shrink:0;color:{{ s.arrowColor }};font-size:15px;transition:color .3s,transform .3s;transform:{{ s.arrowTransform }}">↗</span>
           </div>
-          <p class="soz-svc-desc" style="margin:0;color:var(--text-on-dark-muted);font-size:13.5px;line-height:1.55">{{ s.desc }}</p>
+          <p class="soz-svc-desc" style="margin:0;color:var(--text-on-dark-muted);font-size:clamp(13.5px,0.95vw,15.5px);line-height:1.55">{{ s.desc }}</p>
         </div>
       </a>
     </sc-for>
@@ -237,7 +237,7 @@ section[id]{scroll-margin-top:104px}
   </div>
 
   <div class="soz-cs-title-row">
-    <h2 key="{{ workKey }}" style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2rem,5.2vw,4.4rem);line-height:0.96;letter-spacing:-0.01em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
+    <h2 key="{{ workKey }}" style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2rem,5.2vw,5.4rem);line-height:0.96;letter-spacing:-0.01em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
     <span key="{{ workKeyCat }}" style="color:var(--text-muted);font-size:clamp(13px,1.5vw,19px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .06s both">{{ workCategory }}</span>
   </div>
 
@@ -311,7 +311,7 @@ section[id]{scroll-margin-top:104px}
 
 <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
 <div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,11vh,130px) clamp(20px,5vw,56px) clamp(40px,6vh,64px);box-sizing:border-box;overflow:hidden">
-  <div style="max-width:var(--container-max);margin:0 auto;width:100%">
+  <div style="max-width:1560px;margin:0 auto;width:100%">
 
     <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:10px">
       <div style="display:flex;align-items:center;gap:12px">
@@ -324,8 +324,8 @@ section[id]{scroll-margin-top:104px}
     </div>
 
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(18px,3vh,36px)">
-      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:0.95;letter-spacing:-0.01em">Процесс</h2>
-      <p style="margin:0;color:var(--text-secondary);font-size:15px;line-height:1.6;max-width:330px">Шесть шагов от первого разговора до запуска. Никаких «мы вам позвоним» между ними.</p>
+      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2.2rem,5.4vw,5.6rem);line-height:0.95;letter-spacing:-0.01em">Процесс</h2>
+      <p style="margin:0;color:var(--text-secondary);font-size:clamp(15px,1.05vw,17px);line-height:1.6;max-width:min(400px,26vw)">Шесть шагов от первого разговора до запуска. Никаких «мы вам позвоним» между ними.</p>
     </div>
 
     <div class="soz-process-stage">
@@ -340,7 +340,7 @@ section[id]{scroll-margin-top:104px}
         </div>
       </div>
 
-      <div style="position:relative;height:clamp(300px,56vh,505px);display:flex;justify-content:center">
+      <div style="position:relative;height:clamp(300px,58vh,600px);display:flex;justify-content:center">
         <div style="position:absolute;top:0;bottom:0;width:2px;background:var(--border-on-light-strong)"></div>
         <div ref="{{ processFillRef }}" style="position:absolute;top:0;width:2px;background:var(--accent);height:0%;transition:height .35s cubic-bezier(.16,1,.3,1)"></div>
         <sc-for list="{{ processDots }}" as="d" hint-placeholder-count="6">
@@ -393,7 +393,7 @@ section[id]{scroll-margin-top:104px}
 
 <!-- ═══════════════════ 4 · ЗВОНОК ═══════════════════ -->
 <section id="booking" data-tone="dark" style="background:var(--bg-surface);padding:clamp(118px,10vw,140px) clamp(20px,5vw,56px)">
-<div style="max-width:var(--container-max);margin:0 auto">
+<div style="max-width:1560px;margin:0 auto">
 
   <div data-reveal style="text-align:center;margin-bottom:clamp(28px,4vw,46px)">
     <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:14px">
@@ -401,7 +401,7 @@ section[id]{scroll-margin-top:104px}
       <span style="color:var(--accent);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Живой разговор</span>
       <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
     </div>
-    <h2 style="margin:0 0 16px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.2rem,5.6vw,4.6rem);line-height:0.95;letter-spacing:-0.01em">Выберите время звонка</h2>
+    <h2 style="margin:0 0 16px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.2rem,5.6vw,5.8rem);line-height:0.95;letter-spacing:-0.01em">Выберите время звонка</h2>
     <p style="margin:0 auto;color:var(--text-on-dark-secondary);font-size:clamp(14px,1.6vw,17px);line-height:1.6;max-width:520px">30 минут, без питча — разберём задачу и скажем, что она стоит.</p>
   </div>
 
@@ -499,7 +499,7 @@ section[id]{scroll-margin-top:104px}
 
 <!-- ═══════════════════ 5 · ЦЕНЫ ═══════════════════ -->
 <section id="pricing" data-tone="dark" style="background:var(--bg-canvas);padding:clamp(118px,10vw,140px) clamp(20px,5vw,56px)">
-<div style="max-width:var(--container-max);margin:0 auto">
+<div style="max-width:1560px;margin:0 auto">
 
   <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)">
     <div>
@@ -507,9 +507,9 @@ section[id]{scroll-margin-top:104px}
         <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
         <span style="color:var(--accent);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Прозрачные цены</span>
       </div>
-      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,6vw,5rem);line-height:0.95;letter-spacing:-0.01em">Сколько стоит сайт</h2>
+      <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,6vw,6.4rem);line-height:0.95;letter-spacing:-0.01em">Сколько стоит сайт</h2>
     </div>
-    <p style="margin:0;color:var(--text-on-dark-secondary);font-size:15px;line-height:1.6;max-width:330px">Стартовые цены — без «уточним позже». Смету фиксируем до начала работ.</p>
+    <p style="margin:0;color:var(--text-on-dark-secondary);font-size:clamp(15px,1.05vw,17px);line-height:1.6;max-width:min(400px,26vw)">Стартовые цены — без «уточним позже». Смету фиксируем до начала работ.</p>
   </div>
 
   <div class="soz-price-grid">
@@ -525,20 +525,20 @@ section[id]{scroll-margin-top:104px}
           <span class="soz-price-arrow" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--border-on-dark);display:flex;align-items:center;justify-content:center;color:var(--text-on-dark-secondary);font-size:13px;transition:background .3s,border-color .3s,color .3s,transform .3s">↗</span>
         </div>
 
-        <h3 class="soz-plan-name" style="margin:0 0 10px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1;letter-spacing:-0.005em">{{ pl.name }}</h3>
+        <h3 class="soz-plan-name" style="margin:0 0 10px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(1.3rem,2vw,2rem);line-height:1;letter-spacing:-0.005em">{{ pl.name }}</h3>
         <p class="soz-plan-tag" style="margin:0 0 20px;color:var(--text-on-dark-muted);font-size:13px;line-height:1.5;min-height:40px">{{ pl.tagline }}</p>
 
         <div class="soz-plan-price" style="padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--border-on-dark)">
           <div style="color:var(--text-on-dark-muted);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase;margin-bottom:6px">от</div>
           <div style="display:flex;align-items:baseline;gap:8px">
-            <span class="soz-plan-num" style="font-family:'Anton',sans-serif;color:#fff;font-size:clamp(2rem,3.4vw,2.9rem);line-height:1;letter-spacing:-0.01em">{{ pl.price }}</span>
+            <span class="soz-plan-num" style="font-family:'Anton',sans-serif;color:#fff;font-size:clamp(2rem,3.4vw,3.4rem);line-height:1;letter-spacing:-0.01em">{{ pl.price }}</span>
             <span style="color:var(--accent);font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase">сом</span>
           </div>
         </div>
 
-        <ul class="soz-plan-feats" style="list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:11px;flex:1">
+        <ul class="soz-plan-feats" style="list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:12px;flex:1">
           <sc-for list="{{ pl.features }}" as="f" hint-placeholder-count="6">
-            <li style="display:flex;align-items:flex-start;gap:9px;color:var(--text-on-dark-secondary);font-size:13.5px;line-height:1.45">
+            <li style="display:flex;align-items:flex-start;gap:9px;color:var(--text-on-dark-secondary);font-size:clamp(13.5px,0.95vw,15px);line-height:1.45">
               <span style="flex-shrink:0;color:var(--accent);font-size:12px;line-height:1.45">✦</span>{{ f.label }}
             </li>
           </sc-for>
@@ -556,26 +556,26 @@ section[id]{scroll-margin-top:104px}
 
 <!-- ═══════════════════ 6 · FAQ ═══════════════════ -->
 <section id="faq" data-tone="light" style="background:var(--bg-page);padding:clamp(118px,10vw,140px) clamp(20px,5vw,56px)">
-<div style="max-width:900px;margin:0 auto">
+<div style="max-width:1040px;margin:0 auto">
 
   <div data-reveal style="margin-bottom:clamp(30px,4vw,50px)">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
       <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Частые вопросы</span>
     </div>
-    <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2.2rem,5.4vw,4.2rem);line-height:0.95;letter-spacing:-0.01em">Вопросы и ответы</h2>
+    <h2 style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2.2rem,5.4vw,5.4rem);line-height:0.95;letter-spacing:-0.01em">Вопросы и ответы</h2>
   </div>
 
   <div data-reveal style="border-top:1px solid var(--border-on-light)">
     <sc-for list="{{ faqItems }}" as="q" hint-placeholder-count="8">
       <div style="border-bottom:1px solid var(--border-on-light)">
         <button class="soz-faq-btn" onClick="{{ q.onClick }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(18px,2.4vw,26px) 4px;background:transparent;border:0;cursor:pointer;text-align:left;font-family:var(--font-body);transition:opacity .2s" style-hover="opacity:.62">
-          <span class="soz-faq-q" style="color:var(--text-primary);font-size:clamp(15px,2vw,20px);font-weight:var(--weight-bold);line-height:1.35">{{ q.question }}</span>
+          <span class="soz-faq-q" style="color:var(--text-primary);font-size:clamp(15px,2vw,23px);font-weight:var(--weight-bold);line-height:1.35">{{ q.question }}</span>
           <span class="soz-faq-icon" style="flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1px solid {{ q.iconBorder }};background:{{ q.iconBg }};color:{{ q.iconColor }};display:inline-flex;align-items:center;justify-content:center;font-size:16px;line-height:1;transform:{{ q.iconTransform }};transition:transform .35s cubic-bezier(.16,1,.3,1),background .25s,border-color .25s,color .25s">+</span>
         </button>
         <div style="display:grid;grid-template-rows:{{ q.rows }};transition:grid-template-rows .4s cubic-bezier(.16,1,.3,1)">
           <div style="overflow:hidden">
-            <p class="soz-faq-a" style="margin:0;padding:0 clamp(8px,8vw,60px) clamp(20px,2.4vw,28px) 4px;color:var(--text-secondary);font-size:clamp(14px,1.6vw,16px);line-height:1.65">{{ q.answer }}</p>
+            <p class="soz-faq-a" style="margin:0;padding:0 clamp(8px,8vw,60px) clamp(20px,2.4vw,28px) 4px;color:var(--text-secondary);font-size:clamp(14px,1.6vw,17.5px);line-height:1.65">{{ q.answer }}</p>
           </div>
         </div>
       </div>
@@ -611,7 +611,7 @@ section[id]{scroll-margin-top:104px}
 </div>
 
 <div data-reveal ref="{{ ctaHeadingRef }}" style="will-change:transform;transition:transform .2s ease-out">
-<h2 style="margin:0 0 22px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,7.4vw,6.4rem);line-height:0.96;letter-spacing:-0.01em">Готовы украсть<br>немного внимания<span style="color:var(--accent)">?</span></h2>
+<h2 style="margin:0 0 22px;font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.4rem,7.4vw,7.6rem);line-height:0.96;letter-spacing:-0.01em">Готовы украсть<br>немного внимания<span style="color:var(--accent)">?</span></h2>
 </div>
 
 <p style="margin:0 auto clamp(30px,4vw,44px);color:var(--text-on-dark-secondary);font-size:clamp(15px,1.8vw,19px);line-height:1.6;max-width:460px">Расскажите, что вы строите.<br>Мы скажем, сколько это должно стоить.</p>
@@ -633,12 +633,12 @@ section[id]{scroll-margin-top:104px}
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer style="background:var(--navy-950);border-top:1px solid var(--border-on-dark);padding:clamp(52px,7vw,84px) clamp(20px,5vw,56px) clamp(28px,3vw,36px)">
-<div style="max-width:var(--container-max);margin:0 auto">
+<div style="max-width:1560px;margin:0 auto">
 
   <div class="soz-footer-grid" data-reveal style="margin-bottom:clamp(40px,5vw,64px)">
 
     <div>
-      <div style="font-family:'Anton',sans-serif;color:#fff;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.9;letter-spacing:-0.01em;margin-bottom:18px">SOZ<span style="color:var(--accent)">.</span></div>
+      <div style="font-family:'Anton',sans-serif;color:#fff;font-size:clamp(2.6rem,6vw,5.4rem);line-height:.9;letter-spacing:-0.01em;margin-bottom:18px">SOZ<span style="color:var(--accent)">.</span></div>
       <p style="margin:0 0 20px;color:var(--text-on-dark-secondary);font-size:14.5px;line-height:1.6;max-width:300px">Цифровая студия из Бишкека. Дизайн, разработка и запуск — полным циклом.</p>
       <div style="display:inline-flex;gap:9px;align-items:center;padding:8px 14px;border-radius:999px;border:1px solid rgba(0,229,255,.28);background:rgba(0,229,255,.06);color:var(--text-on-dark-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);text-transform:uppercase">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>Доступны для новых проектов
