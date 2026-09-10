@@ -19,6 +19,9 @@
 <script src="./image-slot.js"></script>
 <style>
 body{margin:0;background:var(--bg-canvas)}
+/* Фирменный циан на белом даёт контраст 2.4:1 — для крупного текста мало.
+   Затемнённый вариант того же тона даёт 3.8:1 и проходит норму. */
+:root{--accent-ink:#0A8FA6}
 a{color:#fff;text-decoration:none}
 a:hover{color:var(--accent)}
 html{scroll-behavior:smooth}
@@ -86,6 +89,14 @@ section[id]{scroll-margin-top:104px}
 @media(max-width:640px){.soz-book-fields{grid-template-columns:minmax(0,1fr)}}
 
 .soz-cs-title-row{display:flex;align-items:baseline;gap:clamp(10px,1.4vw,20px);flex-wrap:wrap}
+/* Столбик номеров у левого поля — как счётчик глав, показывает, где ты в списке */
+.soz-cs-ticker{position:absolute;left:clamp(18px,2.4vw,44px);top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:clamp(6px,0.9vh,12px);pointer-events:none;z-index:1}
+.soz-cs-ticker span{display:flex;align-items:center;gap:7px;font-size:12.5px;
+  font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);
+  font-variant-numeric:tabular-nums;transition:color .3s var(--ease-out)}
+.soz-cs-ticker i{display:block;height:1px;transition:width .3s var(--ease-out),background .3s}
+@media(max-width:1100px){.soz-cs-ticker{display:none}}
 .soz-cs-meta-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 @media(max-width:620px){
@@ -220,9 +231,16 @@ section[id]{scroll-margin-top:104px}
 <section id="work" data-tone="light" ref="{{ workOuterRef }}" style="position:relative;background:var(--bg-card)">
 
 <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-<div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2vh,26px);padding:clamp(90px,11vh,130px) clamp(20px,5vw,56px) clamp(28px,5vh,52px);box-sizing:border-box;overflow:hidden">
+<div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.4vh,18px);padding:clamp(88px,9vh,104px) clamp(20px,5vw,56px) clamp(24px,3vh,36px);padding-left:clamp(76px,7vw,128px);box-sizing:border-box;overflow:hidden">
 
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px">
+  <div class="soz-cs-ticker" aria-hidden="true">
+    <sc-for list="{{ workTicks }}" as="tk" hint-placeholder-count="6">
+      <span style="{{ tk.style }}"><i style="{{ tk.dash }}"></i>{{ tk.label }}</span>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:10px;border-bottom:1px solid var(--border-on-light-strong);position:relative">
+    <div ref="{{ workBarRef }}" style="position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform-origin:left center;transform:scaleX(0)"></div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
       <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Избранные работы</span>
@@ -232,13 +250,9 @@ section[id]{scroll-margin-top:104px}
     </div>
   </div>
 
-  <div style="height:1px;background:var(--border-on-light-strong);position:relative;overflow:hidden">
-    <div ref="{{ workBarRef }}" style="position:absolute;inset:0;background:var(--accent);transform-origin:left center;transform:scaleX(0)"></div>
-  </div>
-
   <div class="soz-cs-title-row">
-    <h2 key="{{ workKey }}" style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--text-primary);font-size:clamp(2rem,5.2vw,5.4rem);line-height:0.96;letter-spacing:-0.01em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
-    <span key="{{ workKeyCat }}" style="color:var(--text-muted);font-size:clamp(13px,1.5vw,19px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .06s both">{{ workCategory }}</span>
+    <h2 key="{{ workKey }}" style="margin:0;font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--accent-ink);font-size:clamp(2rem,5.2vw,5.4rem);line-height:0.96;letter-spacing:-0.01em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
+    <span key="{{ workKeyCat }}" style="font-family:'SOZ Display','Anton',sans-serif;text-transform:uppercase;color:var(--text-muted);font-size:clamp(1.1rem,2.6vw,2.7rem);line-height:1;letter-spacing:-0.005em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .06s both">{{ workCategory }}</span>
   </div>
 
   <div class="soz-cs-meta-row">
@@ -252,7 +266,7 @@ section[id]{scroll-margin-top:104px}
 
   <div class="soz-cs-stage" style="flex:1;min-height:0">
     <div style="position:relative;height:100%;min-height:0;display:flex;align-items:center;justify-content:center">
-    <div style="position:relative;height:100%;aspect-ratio:16/9;max-width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);box-shadow:var(--shadow-lg)">
+    <div style="position:relative;height:100%;width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);box-shadow:var(--shadow-lg)">
       <sc-for list="{{ workSlides }}" as="s" hint-placeholder-count="6">
         <img src="{{ s.img }}" alt="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ s.opacity }};transform:{{ s.transform }};transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)">
       </sc-for>
@@ -267,6 +281,10 @@ section[id]{scroll-margin-top:104px}
         </button>
       </sc-for>
     </div>
+  </div>
+
+  <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--border-on-light)">
+    <div ref="{{ workRailRef }}" style="position:absolute;left:0;right:0;top:0;height:0%;background:var(--accent)"></div>
   </div>
 
 </div>
@@ -800,6 +818,7 @@ const FOOTER_COLS = [
 class Component extends DCLogic {
   workOuterRef = React.createRef();
   workBarRef = React.createRef();
+  workRailRef = React.createRef();
   processOuterRef = React.createRef();
   processFillRef = React.createRef();
   processReelRef = React.createRef();
@@ -910,6 +929,8 @@ class Component extends DCLogic {
         if (idx !== this.state.workIndex) this.setState({ workIndex: idx });
         const bar = this.workBarRef.current;
         if (bar) bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        const rail = this.workRailRef.current;
+        if (rail) rail.style.height = (p * 100).toFixed(2) + '%';
       }
 
       const proc = this.processOuterRef.current;
@@ -1119,6 +1140,12 @@ class Component extends DCLogic {
       /* ── Работы ── */
       workOuterRef: this.workOuterRef,
       workBarRef: this.workBarRef,
+      workRailRef: this.workRailRef,
+      workTicks: PROJECTS.map((_, i) => ({
+        label: pad2(i + 1),
+        style: 'color:' + (i === wi ? 'var(--text-primary)' : 'var(--navy-400)'),
+        dash: 'width:' + (i === wi ? '18px' : '8px') + ';background:' + (i === wi ? 'var(--accent)' : 'var(--navy-200)'),
+      })),
       workName: active.name,
       workCategory: active.category,
       workYear: active.year,
