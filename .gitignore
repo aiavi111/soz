@@ -1,0 +1,11 @@
+# Экспортный мусор из канваса — сайтом не используется
+uploads/*
+!uploads/soz_hero_fastcut_v4.mp4
+
+# Старые мокапы на белом фоне, заменены на assets/portfolio/cases
+assets/portfolio/*.jpeg
+assets/portfolio/tight/
+
+# Служебное
+.DS_Store
+.claude/

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/fonts/fonts.css">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/colors.css">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/typography.css">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/effects.css">
+<link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/base.css">
+<style>
+body{margin:0;background:#000}
+a{color:#fff}
+a:hover{color:#fff}
+@keyframes soz-scroll-tick{0%{transform:translateY(0);opacity:0}25%{opacity:1}75%{opacity:1}100%{transform:translateY(18px);opacity:0}}
+
+/* Entrance: the hero used to pop in fully formed. Staggered so the eye lands
+   on the headline first, then the promise, then the buttons. */
+@keyframes soz-enter{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes soz-fade{from{opacity:0}to{opacity:1}}
+.soz-in{animation:soz-enter .9s cubic-bezier(.16,1,.3,1) both}
+.soz-in-1{animation-delay:.10s}.soz-in-2{animation-delay:.22s}
+.soz-in-3{animation-delay:.34s}.soz-in-4{animation-delay:.46s}
+.soz-nav-in{animation:soz-fade .8s var(--ease-out) both;animation-delay:.15s}
+@media(prefers-reduced-motion:reduce){.soz-in,.soz-nav-in{animation:none}}
+
+/* The glass nav is dark by design, which turns into a muddy grey slab once it
+   floats over a light section. Same glass, inverted, while it sits over one. */
+nav.soz-nav-light{background:rgba(255,255,255,.72)!important;border-color:rgba(10,14,23,.10)!important;
+  box-shadow:0 10px 30px rgba(10,14,23,.12)!important}
+nav.soz-nav-light a{color:rgba(10,14,23,.8)!important}
+nav.soz-nav-light a:hover{color:#00B8CC!important}
+nav.soz-nav-light .soz-nav-cta{background:#0A0E17!important;border-color:rgba(10,14,23,.25)!important;color:#fff!important}
+nav.soz-nav-light .soz-nav-cta:hover{background:#141B2B!important}
+nav.soz-nav-light .soz-nav-logo{filter:invert(1) brightness(.18)}
+nav.soz-nav-light .soz-burger span{background:#0A0E17}
+
+/* Phone nav: logo + burger. The pill is too small to carry a CTA as well. */
+.soz-burger{width:44px;height:44px;flex-shrink:0;display:inline-flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;padding:0;border:0;background:transparent;cursor:pointer}
+.soz-burger span{display:block;width:20px;height:2px;border-radius:2px;background:#fff;
+  transition:transform .32s var(--ease-out),opacity .2s var(--ease-out)}
+.soz-burger[data-open="1"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.soz-burger[data-open="1"] span:nth-child(2){opacity:0}
+.soz-burger[data-open="1"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@keyframes soz-menu-in{from{opacity:0}to{opacity:1}}
+@keyframes soz-menu-item{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.soz-menu-item{animation:soz-menu-item .5s cubic-bezier(.16,1,.3,1) both}
+
+/* Phone: no pill, no glass. Logo pinned to the left corner, burger to the
+   right. `body nav[class]` outranks the .soz-nav-light rules above, so the
+   light-section variant can't put a background back. Drop shadows keep both
+   legible now that nothing sits behind them. */
+@media(max-width:760px){
+  body nav[class]{
+    top:0!important;left:0!important;right:0!important;
+    transform:none!important;box-sizing:border-box!important;
+    height:64px!important;padding:0 16px!important;gap:0!important;
+    justify-content:space-between!important;
+    border-radius:0!important;background:transparent!important;border:0!important;
+    box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  }
+  body nav[class] .soz-nav-logo{filter:drop-shadow(0 1px 5px rgba(0,0,0,.5))}
+  body nav.soz-nav-light .soz-nav-logo{filter:invert(1) brightness(.18)!important}
+  body nav[class] .soz-burger span{box-shadow:0 1px 4px rgba(0,0,0,.45)}
+  body nav.soz-nav-light .soz-burger span{box-shadow:none}
+}
+</style>
+</helmet>
+<section style="position:relative;isolation:isolate;z-index:40;min-height:100vh;width:100%;display:flex;flex-direction:column;overflow:hidden;background:#000;font-family:var(--font-body);box-sizing:border-box">
+
+<video ref="{{ videoRef }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) brightness(0.98) saturate(1.05);z-index:0;transform:scale(1);will-change:transform">
+<source src="uploads/soz_hero_fastcut_v4.mp4" type="video/mp4">
+</video>
+
+<sc-if value="{{ scrimLight }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.16) 45%, rgba(0,0,0,.18) 65%, rgba(0,0,0,.28) 100%);z-index:0"></div></sc-if>
+<sc-if value="{{ scrimMedium }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 45%, rgba(0,0,0,.26) 65%, rgba(0,0,0,.38) 100%);z-index:0"></div></sc-if>
+<sc-if value="{{ scrimHeavy }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.34) 45%, rgba(0,0,0,.4) 65%, rgba(0,0,0,.54) 100%);z-index:0"></div></sc-if>
+
+<nav class="soz-nav-in" ref="{{ navRef }}" style="position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:clamp(28px,5vw,80px);height:64px;padding:0 26px 0 40px;border-radius:999px;background:rgba(20,22,28,.55);border:1px solid rgba(0,229,255,.22);box-shadow:0 8px 24px rgba(0,0,0,.3);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);white-space:nowrap;transition:transform var(--duration-slow) var(--ease-out)">
+
+<a href="#" style="flex-shrink:0;display:flex;align-items:center;text-decoration:none">
+<img class="soz-nav-logo" src="assets/logo-transparent-cropped.png" alt="SOZ" style="transition:filter var(--duration-base) var(--ease-out);height:18px;width:auto;display:block">
+</a>
+
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:clamp(22px,3vw,44px)">
+<a href="#services" style="color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;display:inline-block;transition:color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="color:#00E5FF;transform:translateY(-2px)">Услуги</a>
+<a href="#work" style="color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;display:inline-block;transition:color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="color:#00E5FF;transform:translateY(-2px)">Работы</a>
+<a href="#process" style="color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;display:inline-block;transition:color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="color:#00E5FF;transform:translateY(-2px)">Процесс</a>
+<a href="#pricing" style="color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:var(--weight-medium);letter-spacing:var(--tracking-wide);text-transform:uppercase;display:inline-block;transition:color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="color:#00E5FF;transform:translateY(-2px)">Цены</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+<button class="soz-burger" data-open="{{ menuFlag }}" onClick="{{ toggleMenu }}" aria-label="Меню"><span></span><span></span><span></span></button>
+</sc-if>
+
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+<a class="soz-nav-cta" href="{{ waHref }}" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 18px;border-radius:999px;background:#F3F1EC;border:1px solid rgba(0,229,255,.4);color:#0A0E17;text-decoration:none;font-size:12px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;white-space:nowrap;transition:background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="background:#E0FAFF;transform:translateY(-1px)">Начать проект ↗</a>
+</sc-if>
+
+</nav>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:28;background:rgba(8,11,18,.96);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);display:flex;flex-direction:column;justify-content:center;padding:118px 24px 40px;animation:soz-menu-in .28s var(--ease-out) both;overflow-y:auto">
+  <nav style="display:flex;flex-direction:column;gap:4px;margin-bottom:36px">
+    <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="5">
+      <a class="soz-menu-item" href="{{ l.href }}" onClick="{{ closeMenu }}" style="{{ l.style }};font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.1rem,11vw,3.2rem);line-height:1.12;letter-spacing:-0.01em;text-decoration:none">{{ l.label }}</a>
+    </sc-for>
+  </nav>
+  <div class="soz-menu-item" style="animation-delay:.28s;display:flex;flex-direction:column;gap:12px">
+    <a href="{{ waHref }}" target="_blank" rel="noopener noreferrer" onClick="{{ closeMenu }}" style="height:56px;border-radius:999px;background:#F3F1EC;border:1px solid rgba(0,229,255,.4);color:#0A0E17;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none">Начать проект ↗</a>
+    <a href="https://wa.me/996501656526" target="_blank" rel="noopener noreferrer" style="height:56px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none">WhatsApp ↗</a>
+    <p style="margin:14px 0 0;text-align:center;color:rgba(255,255,255,.5);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Бишкек · +996 501 656 526</p>
+  </div>
+</div>
+</sc-if>
+
+<div ref="{{ headlineRef }}" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px;padding:clamp(120px,16vh,160px) clamp(14px,3.5vw,40px) clamp(20px,4vh,40px);will-change:transform;min-height:0">
+
+<div class="soz-in soz-in-1">
+<div style="font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(3rem,11.5vw,9.4rem);line-height:0.94;letter-spacing:-0.01em;text-shadow:0 2px 14px rgba(0,0,0,.4)">Мы крадём</div>
+<div style="font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(4rem,15.5vw,12.8rem);line-height:0.94;letter-spacing:-0.01em;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-top:clamp(4px,0.8vw,10px)">Внимание<span style="color:#00E5FF">.</span></div>
+</div>
+
+<p class="soz-in soz-in-2" style="margin:0;color:rgba(255,255,255,.88);font-size:clamp(13px,1.6vw,17px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);text-transform:uppercase">Делаем сайты, на которые смотрят дважды.</p>
+
+<div class="soz-in soz-in-3" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:6px">
+<a href="{{ waHref }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 26px;border-radius:999px;background:#F3F1EC;border:1px solid rgba(0,229,255,.4);color:#0A0E17;text-decoration:none;font-size:14px;font-weight:var(--weight-bold);transition:background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out)" style-hover="background:#E0FAFF;transform:translateY(-2px)">Начать проект <span style="color:#00E5FF">↗</span></a>
+<a href="#work" style="display:inline-flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff;text-decoration:none;font-size:14px;font-weight:var(--weight-bold);transition:background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out)" style-hover="background:rgba(0,229,255,.12);border-color:rgba(0,229,255,.7)">Смотреть работы</a>
+</div>
+
+</div>
+
+<div class="soz-in soz-in-4" style="position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px;padding:0 clamp(20px,5vw,56px) clamp(22px,4vw,40px)">
+<div style="display:flex;flex-direction:column;gap:3px;min-width:0;color:rgba(255,255,255,.65);font-size:10px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase;line-height:1.5">
+<span>SOZ</span><span>Цифровая студия</span><span>Бишкек</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0;color:rgba(255,255,255,.65);font-size:10px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase;line-height:1.5;text-align:right">
+<span>Веб-дизайн</span><span>Разработка</span><span>Моушн</span>
+</div>
+</div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#contact&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;scrimStrength&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'light'|'medium'|'heavy'&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;section&quot;:&quot;Video&quot;},&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  videoRef = React.createRef();
+  headlineRef = React.createRef();
+  navRef = React.createRef();
+  navScrolled = false;
+  state = { menuOpen: false };
+  ticking = false;
+  mq = null;
+
+  componentDidMount() {
+    this.playVideo();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.mq = window.matchMedia('(max-width: 760px)');
+    this.mq.addEventListener('change', this.onMqChange);
+    this.forceUpdate();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.mq) this.mq.removeEventListener('change', this.onMqChange);
+    document.body.style.overflow = '';
+  }
+
+  onMqChange = () => { this.setState({ menuOpen: false }); this.forceUpdate(); };
+
+  toggleMenu = () => this.setState((st) => ({ menuOpen: !st.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+  WA = 'https://wa.me/996501656526?text=' +
+    encodeURIComponent('Здравствуйте, SOZ! Пишу с сайта — хочу обсудить проект.');
+
+  componentDidUpdate() {
+    this.playVideo();
+    document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+  }
+
+  playVideo() {
+    const v = this.videoRef.current;
+    if (v && v.paused) v.play().catch(() => {});
+  }
+
+  onScroll = () => {
+    const v = this.videoRef.current;
+    const h = this.headlineRef.current;
+    const nav = this.navRef.current;
+    if (this.props.motionEnabled === false) {
+      if (v) v.style.transform = 'scale(1)';
+      if (h) h.style.transform = 'none';
+      if (nav) { nav.style.transform = (this.mq && this.mq.matches) ? '' : 'translateX(-50%) scale(1)'; }
+      return;
+    }
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      const vh = window.innerHeight || 800;
+      const p = Math.max(0, Math.min(1, window.scrollY / (vh * 0.9)));
+      const eased = 1 - Math.pow(1 - p, 2);
+      if (v) v.style.transform = `scale(${(1 + eased * 0.06).toFixed(4)})`;
+      if (h) h.style.transform = `translateY(${(-eased * 34).toFixed(1)}px)`;
+      if (nav) {
+        /* Match the glass to whatever section the pill is currently floating
+           over, so it never sits as a grey slab on a light one. */
+        const compact = this.mq ? this.mq.matches : false;
+        let tone = 'dark';
+        for (const el of document.querySelectorAll('[data-tone]')) {
+          const r = el.getBoundingClientRect();
+          if (r.top <= 58 && r.bottom > 58) { tone = el.getAttribute('data-tone'); break; }
+        }
+        nav.classList.toggle('soz-nav-light', tone === 'light');
+
+        const scrolled = window.scrollY > 24;
+        if (scrolled !== this.navScrolled) {
+          this.navScrolled = scrolled;
+          /* The pill shrink only makes sense while there IS a pill. */
+          nav.style.transform = compact ? '' : (scrolled ? 'translateX(-50%) scale(0.96)' : 'translateX(-50%) scale(1)');
+        }
+      }
+      this.ticking = false;
+    });
+  };
+
+  renderVals() {
+    const scrim = this.props.scrimStrength ?? 'medium';
+    return {
+      videoRef: this.videoRef,
+      headlineRef: this.headlineRef,
+      navRef: this.navRef,
+      isDesktop: this.mq ? !this.mq.matches : true,
+      isMobile: this.mq ? this.mq.matches : false,
+      menuOpen: this.state.menuOpen,
+      menuFlag: this.state.menuOpen ? '1' : '0',
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      menuLinks: [
+        { label: 'Услуги', href: '#services' }, { label: 'Работы', href: '#work' },
+        { label: 'Процесс', href: '#process' }, { label: 'Цены', href: '#pricing' },
+        { label: 'Вопросы', href: '#faq' },
+      ].map((l, i) => ({ ...l, style: 'animation-delay:' + (0.05 + i * 0.05).toFixed(2) + 's' })),
+      scrimLight: scrim === 'light',
+      scrimMedium: scrim === 'medium',
+      scrimHeavy: scrim === 'heavy',
+      ctaHref: this.props.ctaHref || '#contact',
+      waHref: this.WA,
+    };
+  }
+}
+</script>
+</body>
+</html>
