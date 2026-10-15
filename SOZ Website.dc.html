@@ -26,7 +26,17 @@ section[id]{scroll-margin-top:104px}
 /* Layout grids live here rather than inline because inline styles cannot carry
    media queries — mobile gets its own column counts, not a shrunken desktop. */
 .soz-cs-stage{display:grid;grid-template-columns:minmax(0,1fr) 108px;gap:clamp(18px,2.4vw,34px);align-items:center;min-height:0}
-@media(max-width:1080px){.soz-cs-stage{grid-template-columns:minmax(0,1fr)}}
+/* 861–1080px: one column, so the thumbs drop under the picture as a strip.
+   The picture used to sit in an auto row with nothing but absolutely placed
+   images inside, and that row collapsed to 0. Now it keeps 16:9 and gives up
+   height only when the viewport is too short; the stage stops stretching so
+   tall screens centre picture and strip together. */
+@media(max-width:1080px){
+  .soz-cs-stage{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,auto) auto;flex:0 1 auto!important}
+  .soz-cs-frame{height:auto!important;aspect-ratio:16/9;max-height:100%}
+  .soz-cs-thumbs{flex-direction:row!important;height:auto!important;justify-content:flex-start!important}
+  .soz-cs-thumbs>button{width:auto!important;flex:0 1 120px;min-width:0}
+}
 
 /* Section intros sit beside the heading on wide screens; once they wrap
    under it, a 26vw cap squeezes them into a one-word column. */
@@ -274,7 +284,7 @@ section[id]{scroll-margin-top:104px}
 
   <div class="soz-cs-stage" style="flex:1;min-height:0">
     <div style="position:relative;height:100%;min-height:0;display:flex;align-items:center;justify-content:center">
-    <div style="position:relative;height:100%;width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);border:1px solid var(--border-on-dark);box-shadow:0 30px 80px rgba(0,0,0,.45)">
+    <div class="soz-cs-frame" style="position:relative;height:100%;width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);border:1px solid var(--border-on-dark);box-shadow:0 30px 80px rgba(0,0,0,.45)">
       <sc-for list="{{ workSlides }}" as="s" hint-placeholder-count="6">
         <img src="{{ s.img }}" alt="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ s.opacity }};transform:{{ s.transform }};transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)">
       </sc-for>
@@ -282,7 +292,7 @@ section[id]{scroll-margin-top:104px}
     </div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:9px;height:100%;justify-content:center;min-height:0">
+    <div class="soz-cs-thumbs" style="display:flex;flex-direction:column;gap:9px;height:100%;justify-content:center;min-height:0">
       <sc-for list="{{ workThumbs }}" as="th" hint-placeholder-count="6">
         <button onClick="{{ th.onClick }}" title="{{ th.name }}" style="{{ th.style }}">
           <img src="{{ th.img }}" alt="{{ th.name }}" style="width:100%;height:100%;object-fit:cover;display:block">
