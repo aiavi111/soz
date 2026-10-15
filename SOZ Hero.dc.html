@@ -8,8 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/fonts/fonts.css">
 <link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/colors.css">
 <link rel="stylesheet" href="_ds/soz-design-system-cf83b57c-4974-46b1-9da6-4943f35c3dcd/tokens/typography.css">
@@ -85,7 +84,7 @@ nav.soz-nav-light .soz-burger span{background:#0A0E17}
 <sc-if value="{{ scrimMedium }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 45%, rgba(0,0,0,.26) 65%, rgba(0,0,0,.38) 100%);z-index:0"></div></sc-if>
 <sc-if value="{{ scrimHeavy }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.34) 45%, rgba(0,0,0,.4) 65%, rgba(0,0,0,.54) 100%);z-index:0"></div></sc-if>
 
-<nav class="soz-nav-in" ref="{{ navRef }}" style="position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:clamp(28px,5vw,80px);height:64px;padding:0 26px 0 40px;border-radius:999px;background:rgba(20,22,28,.55);border:1px solid rgba(0,229,255,.22);box-shadow:0 8px 24px rgba(0,0,0,.3);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);white-space:nowrap;transition:transform var(--duration-slow) var(--ease-out)">
+<nav class="soz-nav-in" ref="{{ navRef }}" style="position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:clamp(28px,5vw,80px);height:64px;padding:0 26px 0 40px;border-radius:999px;background:rgba(10,14,23,.55);border:1px solid rgba(0,229,255,.22);box-shadow:0 8px 24px rgba(0,0,0,.3);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);white-space:nowrap;transition:transform var(--duration-slow) var(--ease-out)">
 
 <a href="#" style="flex-shrink:0;display:flex;align-items:center;text-decoration:none">
 <img class="soz-nav-logo" src="assets/logo-transparent-cropped.png" alt="SOZ" style="transition:filter var(--duration-base) var(--ease-out);height:18px;width:auto;display:block">
@@ -114,13 +113,13 @@ nav.soz-nav-light .soz-burger span{background:#0A0E17}
 <div style="position:fixed;inset:0;z-index:28;background:rgba(8,11,18,.96);backdrop-filter:blur(22px) saturate(130%);-webkit-backdrop-filter:blur(22px) saturate(130%);display:flex;flex-direction:column;justify-content:center;padding:118px 24px 40px;animation:soz-menu-in .28s var(--ease-out) both;overflow-y:auto">
   <nav style="display:flex;flex-direction:column;gap:4px;margin-bottom:36px">
     <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="5">
-      <a class="soz-menu-item" href="{{ l.href }}" onClick="{{ closeMenu }}" style="{{ l.style }};font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(2.1rem,11vw,3.2rem);line-height:1.12;letter-spacing:-0.01em;text-decoration:none">{{ l.label }}</a>
+      <a class="soz-menu-item" href="{{ l.href }}" onClick="{{ closeMenu }}" style="{{ l.style }};font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(1.6rem,7.6vw,2.3rem);line-height:1.16;letter-spacing:-0.03em;text-decoration:none">{{ l.label }}</a>
     </sc-for>
   </nav>
   <div class="soz-menu-item" style="animation-delay:.28s;display:flex;flex-direction:column;gap:12px">
     <a href="{{ waHref }}" target="_blank" rel="noopener noreferrer" onClick="{{ closeMenu }}" style="height:56px;border-radius:999px;background:#F3F1EC;border:1px solid rgba(0,229,255,.4);color:#0A0E17;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none">Начать проект ↗</a>
-    <a href="https://wa.me/996501656526" target="_blank" rel="noopener noreferrer" style="height:56px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none">WhatsApp ↗</a>
-    <p style="margin:14px 0 0;text-align:center;color:rgba(255,255,255,.5);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Бишкек · +996 501 656 526</p>
+    <a href="https://wa.me/996773704664" target="_blank" rel="noopener noreferrer" style="height:56px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;text-decoration:none">WhatsApp ↗</a>
+    <p style="margin:14px 0 0;text-align:center;color:rgba(255,255,255,.5);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Бишкек · +996 773 704 664</p>
   </div>
 </div>
 </sc-if>
@@ -128,8 +127,8 @@ nav.soz-nav-light .soz-burger span{background:#0A0E17}
 <div ref="{{ headlineRef }}" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px;padding:clamp(120px,16vh,160px) clamp(14px,3.5vw,40px) clamp(20px,4vh,40px);will-change:transform;min-height:0">
 
 <div class="soz-in soz-in-1">
-<div style="font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(3rem,11.5vw,9.4rem);line-height:0.94;letter-spacing:-0.01em;text-shadow:0 2px 14px rgba(0,0,0,.4)">Мы крадём</div>
-<div style="font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;font-size:clamp(4rem,15.5vw,12.8rem);line-height:0.94;letter-spacing:-0.01em;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-top:clamp(4px,0.8vw,10px)">Внимание<span style="color:#00E5FF">.</span></div>
+<div style="font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(2.1rem,10.7vw,6.3rem);line-height:1.02;letter-spacing:-0.03em;text-shadow:0 2px 14px rgba(0,0,0,.4)">Мы крадём</div>
+<div style="font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(2.7rem,14.6vw,8.6rem);line-height:1.02;letter-spacing:-0.03em;text-shadow:0 2px 14px rgba(0,0,0,.4);margin-top:clamp(4px,0.8vw,10px)">Внимание<span style="color:#00E5FF">.</span></div>
 </div>
 
 <p class="soz-in soz-in-2" style="margin:0;color:rgba(255,255,255,.88);font-size:clamp(13px,1.6vw,17px);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);text-transform:uppercase">Делаем сайты, на которые смотрят дважды.</p>
@@ -146,7 +145,7 @@ nav.soz-nav-light .soz-burger span{background:#0A0E17}
 <span>SOZ</span><span>Цифровая студия</span><span>Бишкек</span>
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0;color:rgba(255,255,255,.65);font-size:10px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase;line-height:1.5;text-align:right">
-<span>Веб-дизайн</span><span>Разработка</span><span>Моушн</span>
+<span>Сайты</span><span>Боты</span><span>Приложения</span>
 </div>
 </div>
 
@@ -180,7 +179,7 @@ class Component extends DCLogic {
 
   toggleMenu = () => this.setState((st) => ({ menuOpen: !st.menuOpen }));
   closeMenu = () => this.setState({ menuOpen: false });
-  WA = 'https://wa.me/996501656526?text=' +
+  WA = 'https://wa.me/996773704664?text=' +
     encodeURIComponent('Здравствуйте, SOZ! Пишу с сайта — хочу обсудить проект.');
 
   componentDidUpdate() {
