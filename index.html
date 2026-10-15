@@ -246,7 +246,7 @@ section[id]{scroll-margin-top:104px}
 </section>
 
 <!-- ═══════════════════ 2 · ИЗБРАННЫЕ РАБОТЫ ═══════════════════ -->
-<section id="work" data-tone="dark" ref="{{ workOuterRef }}" style="position:relative;background:var(--bg-canvas);border-top:1px solid var(--border-on-dark)">
+<section id="work" data-tone="light" ref="{{ workOuterRef }}" style="position:relative;background:var(--bg-card)">
 
 <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
 <div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.4vh,18px);padding:clamp(88px,9vh,104px) clamp(20px,5vw,56px) clamp(24px,3vh,36px);padding-left:clamp(76px,7vw,128px);box-sizing:border-box;overflow:hidden">
@@ -257,34 +257,34 @@ section[id]{scroll-margin-top:104px}
     </sc-for>
   </div>
 
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:10px;border-bottom:1px solid var(--border-on-dark);position:relative">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:10px;border-bottom:1px solid var(--border-on-light-strong);position:relative">
     <div ref="{{ workBarRef }}" style="position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform-origin:left center;transform:scaleX(0)"></div>
     <div style="display:flex;align-items:center;gap:12px">
       <span style="width:26px;height:1px;background:var(--accent);display:inline-block"></span>
-      <span style="color:var(--accent);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Избранные работы</span>
+      <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Избранные работы</span>
     </div>
-    <div style="color:var(--text-on-dark-muted);font-size:12px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest)">
-      <span style="color:#fff">{{ workCounter }}</span> / {{ workTotal }}
+    <div style="color:var(--text-secondary);font-size:12px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest)">
+      <span style="color:var(--text-primary)">{{ workCounter }}</span> / {{ workTotal }}
     </div>
   </div>
 
   <div class="soz-cs-title-row">
-    <h2 key="{{ workKey }}" style="margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:var(--accent);text-shadow:0 0 28px rgba(0,229,255,.35);font-size:clamp(1.8rem,4.4vw,4.6rem);line-height:1.02;letter-spacing:-0.03em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
-    <span key="{{ workKeyCat }}" style="font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(.95rem,1.7vw,1.75rem);line-height:1;letter-spacing:-0.02em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .06s both">{{ workCategory }}</span>
+    <h2 key="{{ workKey }}" style="margin:0;font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:var(--accent);font-size:clamp(1.8rem,4.4vw,4.6rem);line-height:1.02;letter-spacing:-0.03em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) both">{{ workName }}</h2>
+    <span key="{{ workKeyCat }}" style="font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:var(--text-secondary);font-size:clamp(.95rem,1.7vw,1.75rem);line-height:1;letter-spacing:-0.02em;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .06s both">{{ workCategory }}</span>
   </div>
 
   <div class="soz-cs-meta-row">
     <div key="{{ workKeyTags }}" style="display:flex;gap:8px;flex-wrap:wrap;animation:soz-rise .55s cubic-bezier(.16,1,.3,1) .1s both">
       <sc-for list="{{ workTags }}" as="t" hint-placeholder-count="3">
-        <span style="display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--border-on-dark-strong);color:var(--text-on-dark-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);text-transform:uppercase">{{ t.label }}</span>
+        <span style="display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--border-on-light-strong);color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);text-transform:uppercase">{{ t.label }}</span>
       </sc-for>
     </div>
-    <a href="{{ workCtaHref }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:12px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-widest);text-transform:uppercase;transition:color var(--duration-base) var(--ease-out)" style-hover="color:var(--accent)">{{ workCtaLabel }}</a>
+    <a href="{{ workCtaHref }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;color:var(--text-primary);font-size:12px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-widest);text-transform:uppercase;transition:color var(--duration-base) var(--ease-out)" style-hover="color:var(--cyan-600)">{{ workCtaLabel }}</a>
   </div>
 
   <div class="soz-cs-stage" style="flex:1;min-height:0">
     <div style="position:relative;height:100%;min-height:0;display:flex;align-items:center;justify-content:center">
-    <div class="soz-cs-frame" style="position:relative;height:100%;width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);border:1px solid var(--border-on-dark);box-shadow:0 30px 80px rgba(0,0,0,.45)">
+    <div class="soz-cs-frame" style="position:relative;height:100%;width:100%;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy-900);box-shadow:var(--shadow-lg)">
       <sc-for list="{{ workSlides }}" as="s" hint-placeholder-count="6">
         <img src="{{ s.img }}" alt="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ s.opacity }};transform:{{ s.transform }};transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)">
       </sc-for>
@@ -301,7 +301,7 @@ section[id]{scroll-margin-top:104px}
     </div>
   </div>
 
-  <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--border-on-dark)">
+  <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--border-on-light)">
     <div ref="{{ workRailRef }}" style="position:absolute;left:0;right:0;top:0;height:0%;background:var(--accent)"></div>
   </div>
 
@@ -312,29 +312,29 @@ section[id]{scroll-margin-top:104px}
 <div style="padding:clamp(118px,12vw,100px) 16px clamp(50px,9vw,80px)">
   <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
     <span style="width:22px;height:1px;background:var(--accent);display:inline-block"></span>
-    <span style="color:var(--accent);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Избранные работы</span>
+    <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">Избранные работы</span>
   </div>
-  <h2 style="margin:0 0 28px;font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:#fff;font-size:clamp(1.8rem,7.4vw,2.5rem);line-height:1.02">Работы</h2>
+  <h2 style="margin:0 0 28px;font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--text-primary);font-size:clamp(1.8rem,7.4vw,2.5rem);line-height:1.02">Работы</h2>
   <div style="display:flex;flex-direction:column;gap:18px">
     <sc-for list="{{ workCards }}" as="p" hint-placeholder-count="6">
-      <a data-reveal href="{{ p.href }}" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface-raised);border:1px solid var(--border-on-dark)">
+      <a data-reveal href="{{ p.href }}" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-card);box-shadow:var(--shadow-lg)">
         <div style="width:100%;aspect-ratio:16/9;background:var(--navy-900);overflow:hidden">
           <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
         <div class="soz-wk-body" style="padding:20px 20px 24px;display:flex;flex-direction:column;gap:10px">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-            <span style="color:var(--text-on-dark-muted);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">{{ p.category }}</span>
-            <span style="color:var(--text-on-dark-muted);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest)">{{ p.counter }}</span>
+            <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest);text-transform:uppercase">{{ p.category }}</span>
+            <span style="color:var(--text-secondary);font-size:11px;font-weight:var(--weight-semibold);letter-spacing:var(--tracking-widest)">{{ p.counter }}</span>
           </div>
           <h3 class="soz-wk-title" style="margin:0;font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--accent);font-size:1.25rem;line-height:1">{{ p.name }}</h3>
-          <p class="soz-wk-desc" style="margin:0;color:var(--text-on-dark-secondary);font-size:14px;line-height:1.5">{{ p.desc }}</p>
-          <span style="color:#fff;font-size:11px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-widest);text-transform:uppercase;margin-top:2px">{{ p.ctaLabel }}</span>
+          <p class="soz-wk-desc" style="margin:0;color:var(--text-secondary);font-size:14px;line-height:1.5">{{ p.desc }}</p>
+          <span style="color:var(--text-primary);font-size:11px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-widest);text-transform:uppercase;margin-top:2px">{{ p.ctaLabel }}</span>
         </div>
       </a>
     </sc-for>
 
     <sc-if value="{{ workHasMore }}" hint-placeholder-val="{{ true }}">
-      <button onClick="{{ showMoreWork }}" style="width:100%;height:54px;border-radius:999px;background:transparent;border:1px solid var(--border-on-dark-strong);color:#fff;font-family:var(--font-body);font-size:12.5px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;cursor:pointer;transition:background .25s var(--ease-out),border-color .25s var(--ease-out)" style-hover="background:rgba(0,229,255,.1);border-color:var(--accent)">Смотреть ещё <span style="color:var(--accent)">+{{ workRest }}</span></button>
+      <button onClick="{{ showMoreWork }}" style="width:100%;height:54px;border-radius:999px;background:transparent;border:1px solid var(--border-on-light-strong);color:var(--text-primary);font-family:var(--font-body);font-size:12.5px;font-weight:var(--weight-bold);letter-spacing:var(--tracking-wide);text-transform:uppercase;cursor:pointer;transition:background .25s var(--ease-out),border-color .25s var(--ease-out)" style-hover="background:var(--navy-50);border-color:var(--accent)">Смотреть ещё <span style="color:var(--cyan-600)">+{{ workRest }}</span></button>
     </sc-if>
   </div>
 </div>
@@ -1233,8 +1233,8 @@ class Component extends DCLogic {
       workRailRef: this.workRailRef,
       workTicks: PROJECTS.map((_, i) => ({
         label: pad2(i + 1),
-        style: 'color:' + (i === wi ? '#fff' : 'var(--navy-500)'),
-        dash: 'width:' + (i === wi ? '18px' : '8px') + ';background:' + (i === wi ? 'var(--accent)' : 'var(--navy-600)'),
+        style: 'color:' + (i === wi ? 'var(--text-primary)' : 'var(--navy-400)'),
+        dash: 'width:' + (i === wi ? '18px' : '8px') + ';background:' + (i === wi ? 'var(--accent)' : 'var(--navy-200)'),
       })),
       workName: active.name,
       workCategory: active.category,
@@ -1258,7 +1258,7 @@ class Component extends DCLogic {
         name: p.name,
         onClick: () => this.goToProject(i),
         style: 'width:100%;aspect-ratio:16/9;padding:0;border-radius:8px;overflow:hidden;cursor:pointer;background:var(--navy-900);' +
-          'border:1px solid ' + (i === wi ? 'var(--accent)' : 'var(--border-on-dark-strong)') + ';' +
+          'border:1px solid ' + (i === wi ? 'var(--accent)' : 'var(--border-on-light-strong)') + ';' +
           'opacity:' + (i === wi ? 1 : 0.62) + ';' +
           'box-shadow:' + (i === wi ? 'var(--glow-cyan-sm)' : 'none') + ';' +
           'transition:opacity .3s,border-color .3s,box-shadow .3s',
